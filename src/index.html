@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 p-6 md:p-12">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
+        <h1 class="text-3xl font-extrabold mb-2 text-slate-800"> House Price Prediction</h1>
+        <p class="text-slate-500 mb-8">Enter the house details to get an predicted house valuation on the market.</p>
+        
+        <div id="form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Bedrooms</label>
+                <input type="number" id="Bedrooms" value="3" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Bathrooms</label>
+                <input type="number" id="Bathrooms" step="0.5" value="2.5" class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Living Space (sqft)</label>
+                <input type="number" id="Sqft_Living" value="2000" class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Lot Size (sqft)</label>
+                <input type="number" id="Sqft_lot" value="5000" class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Floors</label>
+                <input type="number" id="Floors" step="0.5" value="1.0" class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Waterfront (0 or 1)</label>
+                <input type="number" id="Waterfront" min="0" max="1" value="0" class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">View (0 to 4)</label>
+                <input type="number" id="view" min="0" max="4" value="0" class="w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Condition (1 to 5)</label>
+                <input type="number" id="Condition" min="1" max="5" value="3" class="w-full p-2 border rounded-lg">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">Basement Size (sqft)</label>
+                <input type="number" id="Sqft_Basement" value="0" class="w-full p-2 border rounded-lg">
+            </div>
+            
+            <button onclick="predict()" class="md:col-span-2 mt-4 bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">
+                Get Estimated Price
+            </button>
+        </div>
+
+        <div id="result-container" class="hidden mt-8 p-4 bg-green-50 border-2 border-green-200 rounded-xl">
+            <p class="text-sm text-green-700 text-center uppercase tracking-widest font-semibold">Predicted Market Value</p>
+            <div id="result" class="text-3xl font-black text-green-600 text-center mt-2"></div>
+        </div>
+
+        <div id="error" class="hidden mt-4 p-4 bg-red-50 text-red-600 border border-red-200 rounded-xl text-center"></div>
+    </div>
+
+    <script>
+        async function predict() {
+            // Reset UI
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('error').classList.add('hidden');
+
+            // Gather all data from inputs
+            const data = {
+                Bedrooms: parseInt(document.getElementById('Bedrooms').value),
+                Bathrooms: parseFloat(document.getElementById('Bathrooms').value),
+                Sqft_Living: parseInt(document.getElementById('Sqft_Living').value),
+                Sqft_lot: parseInt(document.getElementById('Sqft_lot').value),
+                Floors: parseFloat(document.getElementById('Floors').value),
+                Waterfront: parseInt(document.getElementById('Waterfront').value),
+                view: parseInt(document.getElementById('view').value),
+                Condition: parseInt(document.getElementById('Condition').value),
+                Sqft_Basement: parseInt(document.getElementById('Sqft_Basement').value)
+            };
+
+            try {
+                const response = await fetch('http://localhost:8000/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error('API connection failed or invalid data');
+
+                const result = await response.json();
+                
+                // Show result
+                document.getElementById('result-container').classList.remove('hidden');
+                document.getElementById('result').innerText = `$${result.estimated_price.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            } catch (err) {
+                document.getElementById('error').classList.remove('hidden');
+                document.getElementById('error').innerText = "Error: Could not reach the API. Make sure your Docker container is running!";
+            }
+        }
+    </script>
+</body>
+</html>

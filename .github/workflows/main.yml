@@ -1,0 +1,36 @@
+name: House Price CI/CD
+
+on:
+  push:
+    branches: [ main ]        # Run this workflow on every push to the main branch
+  pull_request:
+    branches: [ main ]        # Also run on pull requests targeting main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest     # Use the latest Ubuntu runner provided by GitHub
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3   # Pull the repository code into the runner
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'    # Install Python 3.10 on the runner
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip   # Upgrade pip to the latest version
+        pip install -r requirements_docker.txt # Install only production/inference dependencies
+
+    - name: Run Basic Import Test
+      run: |
+        # Verify that key modules can be imported without errors
+        python -c "from src.step2_feature_engineering import add_features; print('Step 2 OK')"
+        python -c "from src.step9_predict import predict_price; print('Step 9 OK')"
+
+    - name: Build Docker Image
+      run: |
+        # Build the Docker image to ensure Dockerfile is valid
+        docker build -t house-price-api .
