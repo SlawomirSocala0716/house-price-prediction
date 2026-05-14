@@ -1,0 +1,36 @@
+# --- DATA & MODELS ---
+# Ignore folders containing raw data (often hundreds of MBs)
+data/
+*.csv
+*.xlsx
+
+# If your .joblib model file exceeds 100MB, uncomment the line below:
+# models/house_price_hybrid_champion.joblib
+
+# --- PYTHON ---
+# Python bytecode and temporary compilation files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments (should be created locally by each developer)
+.venv/
+venv/
+env/
+virtualenv/
+
+# --- IDE & SYSTEM ---
+# Editor-specific settings (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# --- SECURITY ---
+# Crucial! Protect files containing API keys, passwords, or secrets
+.env
