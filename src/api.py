@@ -5,6 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware  # !new library for .html
 import uvicorn
 import os
 
+from fastapi.responses import FileResponse # new, for creating website page for user
+
 # Import the prediction logic from your Step 9
 from src.step9_predict import predict_price
 
@@ -16,10 +18,10 @@ app = FastAPI(
 )
 
 # 2. !NEW - ADD CORS MIDDLEWARE for .html 
-# To musi być zaraz po 'app = FastAPI(...)'
+# we establish middleware directly after FastAPI
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # Allows your index.html frontend to communicate with the API
+    allow_origins=["*"],   # Allows index.html frontend to communicate with the API
     allow_credentials=True,
     allow_methods=["*"],   # Enables all HTTP methods such as POST, GET, etc.
     allow_headers=["*"],
@@ -55,11 +57,7 @@ class HouseFeatures(BaseModel):
 
 @app.get("/", tags=["Health Check"])
 async def root():
-    return {
-        "status": "online",
-        "service": "House Price Champion API",
-        "documentation": "/docs"
-    }
+    return FileResponse("src/index.html")
 
 @app.post("/predict", tags=["Machine Learning"])
 async def get_prediction(house: HouseFeatures):
