@@ -67,6 +67,7 @@ async def root():
 
 @app.post("/predict", tags=["Machine Learning"])
 async def get_prediction(house: HouseFeatures):
+    print(f"DEBUG: Input data received: {house}")
     try:
         input_data = house.model_dump()
         estimated_price = predict_price(input_data)
