@@ -7,8 +7,13 @@ import os
 
 from fastapi.responses import FileResponse # new, for creating website page for user
 
+# importing the path
+from pathlib import Path
+
 # Import the prediction logic from your Step 9
 from src.step9_predict import predict_price
+
+BASE_DIR = Path(__file__).resolve().parent
 
 # 1. Initialize FastAPI application
 app = FastAPI(
@@ -57,7 +62,8 @@ class HouseFeatures(BaseModel):
 
 @app.get("/", tags=["Health Check"])
 async def root():
-    return FileResponse("src/index.html")
+    html_path = BASE_DIR / "index.html"  # path & index.html file
+    return FileResponse(html_path)
 
 @app.post("/predict", tags=["Machine Learning"])
 async def get_prediction(house: HouseFeatures):
