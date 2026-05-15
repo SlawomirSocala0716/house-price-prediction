@@ -19,6 +19,7 @@ COPY models/house_price_hybrid_champion.joblib models/
 COPY src/api.py src/
 COPY src/step2_feature_engineering.py src/
 COPY src/step9_predict.py src/
+COPY src/index.html src/
 
 # 5. Expose the port that FastAPI will run on
 EXPOSE 8000
