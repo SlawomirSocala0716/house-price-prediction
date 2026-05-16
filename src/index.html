@@ -6,39 +6,48 @@
     <title>House Price Predictor - Better Visit House Price Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Ultra-realistic pure CSS Boat Deck / Wood Planks styling */
+        /* Ultra-realistic dark burned wood planks inspired by the generated graphics */
         .wood-bg {
-            background-color: #3e2514;
+            background-color: #1a0f09;
             background-image: 
-                /* 1. 3D Seams & Caulking: Deep shadows and highlights between planks */
+                /* 1. Deep 3D Planks Seams (Ostre, głębokie szczeliny między deskami) */
                 linear-gradient(90deg, 
-                    rgba(0, 0, 0, 0.85) 0px, 
-                    rgba(0, 0, 0, 0.4) 2px, 
-                    rgba(255, 255, 255, 0.05) 3px, 
-                    transparent 15px, 
-                    transparent 125px, 
-                    rgba(0, 0, 0, 0.4) 137px, 
-                    rgba(0, 0, 0, 0.9) 140px
+                    rgba(0, 0, 0, 0.95) 0px, 
+                    rgba(0, 0, 0, 0.7) 3px, 
+                    transparent 4px, 
+                    transparent 136px, 
+                    rgba(0, 0, 0, 0.5) 137px, 
+                    rgba(0, 0, 0, 0.95) 140px
                 ),
-                /* 2. Realistic Plank Alternation: 4 distinct warm organic wood shades */
+                /* 2. Bevel Highlight (Delikatne rozświetlenie krawędzi deski dające trójwymiarowość) */
+                linear-gradient(90deg, 
+                    transparent 0px, 
+                    rgba(255, 255, 255, 0.04) 4px, 
+                    transparent 6px, 
+                    transparent 134px, 
+                    rgba(0, 0, 0, 0.4) 138px, 
+                    transparent 140px
+                ),
+                /* 3. Rich Dark Wood Tones (Cztery celowo zróżnicowane odcienie głębokiego mahoniu) */
                 repeating-linear-gradient(90deg, 
-                    #4e3019 0px, #4e3019 140px, 
-                    #3b2210 140px, #3b2210 280px, 
-                    #57361c 280px, #57361c 420px,
-                    #442914 420px, #442914 560px
+                    #2d190e 0px, #2d190e 140px, 
+                    #1f1109 140px, #1f1109 280px, 
+                    #331d10 280px, #331d10 420px,
+                    #25150b 420px, #25150b 560px
                 ),
-                /* 3. Micro Wood Grain Texturing: Horizontal fibers overlay */
+                /* 4. Rugged Wood Fiber Grain (Poprzeczne, nieregularne słoje dające żywą strukturę) */
                 repeating-linear-gradient(0deg, 
-                    rgba(0, 0, 0, 0.07) 0px, rgba(0, 0, 0, 0.07) 1px, 
-                    transparent 1px, transparent 4px, 
-                    rgba(255, 255, 255, 0.02) 4px, rgba(255, 255, 255, 0.02) 5px, 
-                    transparent 5px, transparent 8px
+                    rgba(0, 0, 0, 0.12) 0px, rgba(0, 0, 0, 0.12) 2px, 
+                    transparent 2px, transparent 6px, 
+                    rgba(255, 255, 255, 0.01) 6px, rgba(255, 255, 255, 0.01) 8px, 
+                    transparent 8px, transparent 12px
                 ),
-                /* 4. Ambient Vignette: Dramatic light hitting the center of the deck */
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.4) 80%);
+                /* 5. Natural Wood Discoloration (Duże, surowe plamy imitujące naturalne przebarwienia drewna) */
+                linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, transparent 60%, rgba(0, 0, 0, 0.5) 100%),
+                /* 6. Heavy Vignette (Mocny cień na rogach ekranu skupiający światło na centrum) */
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.7) 90%);
             
-            /* Sizing the layers dynamically to make them mismatch and look organic */
-            background-size: 140px 100%, 560px 100%, 100% 8px, 100% 100%;
+            background-size: 140px 100%, 140px 100%, 560px 100%, 100% 12px, 100% 100%, 100% 100%;
         }
     </style>
 </head>
@@ -48,16 +57,23 @@
         
         <div class="bg-amber-400 border-8 border-red-600 rounded-3xl p-6 shadow-2xl flex flex-col justify-between items-center text-center transform -rotate-1 hover:rotate-0 transition duration-300">
             <div>
-                <h2 class="text-red-600 font-black text-4xl tracking-tighter uppercase font-serif">BETTER CALL SAUL!</h2>
-                <p class="text-blue-900 font-bold text-xl mt-1 tracking-wide">Are your property estimates criminal?</p>
+                <h2 class="text-red-600 font-black text-2xl md:text-3xl tracking-tighter uppercase font-serif">BETTER VISIT HOUSEPREDICTION WEBSITE!</h2>
+                <p class="text-blue-900 font-bold text-lg mt-1 tracking-wide">Are your property estimates criminal?</p>
             </div>
 
-            <div class="my-6 text-blue-950">
-                <svg width="160" height="200" viewBox="0 0 24 24" fill="currentColor" class="mx-auto transform scale-x-[-1]">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            <div class="my-4 w-full overflow-hidden rounded-2xl border-4 border-blue-900 bg-amber-50 shadow-md p-4 flex flex-col items-center justify-center gap-4">
+                <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-blue-900 drop-shadow-md">
+                    <path d="M50 10 L10 45 L10 90 L90 90 L90 45 Z" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M50 10 L50 90" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+                    <path d="M10 45 L90 45" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+                    <path d="M70 27 L70 15 L80 15 L80 35" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M41 90 L41 60 L59 60 L59 90" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 55 H34 V67 H22 Z" stroke="currentColor" stroke-width="3"/>
+                    <path d="M66 55 H78 V67 H66 Z" stroke="currentColor" stroke-width="3"/>
                 </svg>
-                <div class="bg-red-600 text-white font-black text-lg px-4 py-1 rounded border-2 border-white uppercase animate-bounce mt-2">
-                    "Better use HousePrediction website!"
+                
+                <div class="w-full bg-[#CC0000] text-white font-black py-3 px-4 rounded-xl border-2 border-white uppercase tracking-wider shadow-md text-sm md:text-base animate-bounce">
+                    "We Guarantee Justice Price!"
                 </div>
             </div>
 
@@ -71,7 +87,7 @@
             <div>
                 <div class="flex items-center gap-3 mb-2">
                     <span class="text-4xl">🏠</span>
-                    <h1 class="text-3xl font-black text-stone-800 tracking-tight">House Price Champion</h1>
+                    <h1 class="text-3xl font-black text-stone-800 tracking-tight">House Price Prediction</h1>
                 </div>
                 <p class="text-stone-600 mb-6 font-medium">Enter the house details to get an instant, legally-defensible market valuation.</p>
                 
@@ -165,7 +181,7 @@
                 document.getElementById('result').innerText = `$${result.estimated_price.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             } catch (err) {
                 document.getElementById('error').classList.remove('hidden');
-                document.getElementById('error').innerText = "Error: Could not reach the API. Saul's servers might be busy!";
+                document.getElementById('error').innerText = "Error: Could not reach the API. Server might be rebuilding!";
             }
         }
     </script>
