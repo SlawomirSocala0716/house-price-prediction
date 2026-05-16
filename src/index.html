@@ -6,20 +6,39 @@
     <title>House Price Predictor - Better Call Saul Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* wood desing in CSS */
+        /* Ultra-realistic pure CSS Boat Deck / Wood Planks styling */
         .wood-bg {
-            background-color: #4a2c11;
-            background-image: repeating-linear-gradient(
-                90deg,
-                #5c3a21 0px,
-                #5c3a21 120px,
-                #4a2c11 121px,
-                #4a2c11 130px,
-                #6d442a 131px,
-                #6d442a 240px,
-                #3b220c 241px,
-                #3b220c 250px
-            );
+            background-color: #3e2514;
+            background-image: 
+                /* 1. 3D Seams & Caulking: Deep shadows and highlights between planks */
+                linear-gradient(90deg, 
+                    rgba(0, 0, 0, 0.85) 0px, 
+                    rgba(0, 0, 0, 0.4) 2px, 
+                    rgba(255, 255, 255, 0.05) 3px, 
+                    transparent 15px, 
+                    transparent 125px, 
+                    rgba(0, 0, 0, 0.4) 137px, 
+                    rgba(0, 0, 0, 0.9) 140px
+                ),
+                /* 2. Realistic Plank Alternation: 4 distinct warm organic wood shades */
+                repeating-linear-gradient(90deg, 
+                    #4e3019 0px, #4e3019 140px, 
+                    #3b2210 140px, #3b2210 280px, 
+                    #57361c 280px, #57361c 420px,
+                    #442914 420px, #442914 560px
+                ),
+                /* 3. Micro Wood Grain Texturing: Horizontal fibers overlay */
+                repeating-linear-gradient(0deg, 
+                    rgba(0, 0, 0, 0.07) 0px, rgba(0, 0, 0, 0.07) 1px, 
+                    transparent 1px, transparent 4px, 
+                    rgba(255, 255, 255, 0.02) 4px, rgba(255, 255, 255, 0.02) 5px, 
+                    transparent 5px, transparent 8px
+                ),
+                /* 4. Ambient Vignette: Dramatic light hitting the center of the deck */
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.4) 80%);
+            
+            /* Sizing the layers dynamically to make them mismatch and look organic */
+            background-size: 140px 100%, 560px 100%, 100% 8px, 100% 100%;
         }
     </style>
 </head>
@@ -101,7 +120,7 @@
             </div>
 
             <div>
-                <div id="result-container" class="hidden mt-6 p-5 bg-green-100 border-4 border-green-400 rounded-2xl animate-pulse">
+                <div id="result-container" class="hidden mt-6 p-5 bg-green-100 border-4 border-green-400 rounded-2xl">
                     <p class="text-xs text-green-800 text-center uppercase tracking-widest font-black">Guaranteed Market Value</p>
                     <div id="result" class="text-4xl font-black text-green-700 text-center mt-1"></div>
                 </div>
@@ -135,7 +154,6 @@
                 const response = await fetch('https://house-price-prediction-439u.onrender.com/predict', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    background: 'transparent',
                     body: JSON.stringify(data)
                 });
 
