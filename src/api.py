@@ -62,7 +62,6 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan
 )
-
 # 2. ADD CORS MIDDLEWARE for HTML client communication
 app.add_middleware(
     CORSMiddleware,
