@@ -23,12 +23,17 @@ jobs:
       run: |
         python -m pip install --upgrade pip   # Upgrade pip to the latest version
         pip install -r requirements_docker.txt # Install only production/inference dependencies
+        pip install pytest httpx psycopg2-binary # this for pytest
 
     - name: Run Basic Import Test
       run: |
         # Verify that key modules can be imported without errors
         python -c "from src.step2_feature_engineering import add_features; print('Step 2 OK')"
         python -c "from src.step9_predict import predict_price; print('Step 9 OK')"
+
+    - name: Run Full Unit Tests with pytest  # here the 4 tests are start working
+      run: |
+        pytest
 
     - name: Build Docker Image
       run: |

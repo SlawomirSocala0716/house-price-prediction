@@ -7,6 +7,8 @@ import os
 from contextlib import asynccontextmanager  # Handles application startup and shutdown events
 import psycopg2  # PostgreSQL database adapter
 
+from pydantic import BaseModel, Field # this is for establishing adequate values to avoid situation e.g.: bedroom -1
+
 # Importing response and path utilities
 from fastapi.responses import FileResponse
 from pathlib import Path
@@ -73,15 +75,15 @@ app.add_middleware(
 
 # 3. Define the data schema
 class HouseFeatures(BaseModel):
-    Bedrooms: int
-    Bathrooms: float
-    Sqft_Living: int
-    Sqft_lot: int
-    Floors: float
-    Waterfront: int
-    view: int
-    Condition: int
-    Sqft_Basement: int
+    Bedrooms: int = Field(..., ge=0, le=15, description="Number of bedrooms (0 to 15)")
+    Bathrooms: float = Field(..., ge=0.5, le=10.0, description="Number of bathrooms (0.5 to 10) (in USA 0.5 = halfbath)")
+    Sqft_Living: int = Field(..., ge=150, le=15000, description="Lot size (square feet)")
+    Sqft_lot: int = Field(..., ge=150, le=1000000, description="Number of floors (1 to 5)")
+    Floors: float = Field(..., ge=1.0, le=5.0, description="Number of floors (1 to 5) (in USA ground is the first floor)")
+    Waterfront: int = Field(..., ge=0, le=1, description="Waterfront: 0 = no, 1 = yes")
+    view: int = Field(..., ge=0, le=4, description="View rating (0 to 4)")
+    Condition: int = Field(..., ge=1, le=5, description="Condition rating (1 to 5)")
+    Sqft_Basement: int = Field(..., ge=0, le=10000, description="Basement area (0 if none))")
 
     model_config = {
         "json_schema_extra": {
@@ -103,6 +105,44 @@ class HouseFeatures(BaseModel):
 async def root():
     html_path = BASE_DIR / "index.html"  # Path pointing to the frontend template
     return FileResponse(html_path)
+
+@app.get("/analytics", tags=["Analytics"])
+async def get_analytics():
+    db_url = os.environ.get("DATABASE_URL")
+    if not db_url:
+        raise HTTPException(status_code=500, detail="Database connection string not found.")
+    
+    try:
+        conn = psycopg2.connect(db_url)
+        cur = conn.cursor()
+        
+        # using SQL we can see have many entries were conducted and will see average questions 
+        cur.execute("""
+            SELECT 
+                COUNT(*) as total_searches,
+                AVG(predicted_price) as avg_price,
+                AVG(sqft_living) as avg_living,
+                AVG(bedrooms) as avg_beds
+            FROM house_predictions;
+        """)
+        
+        row = cur.fetchone()
+        cur.close()
+        conn.close()
+        
+        # the data will be in JSON format 
+        return {
+            "status": "success",
+            "metrics": {
+                "total_predictions_made": row[0] if row[0] else 0,
+                "average_predicted_price": round(row[1], 2) if row[1] else 0.0,
+                "average_sqft_living": round(row[2], 1) if row[2] else 0.0,
+                "average_bedrooms_requested": round(row[3], 1) if row[3] else 0.0
+            }
+        }
+    except Exception as e:
+        print(f"ERROR: Failed to fetch data for analytics: {str(e)}")
+        raise HTTPException(status_code=500, detail="Internal server error while fetching metrics.")
 
 @app.post("/predict", tags=["Machine Learning"])
 async def get_prediction(house: HouseFeatures):

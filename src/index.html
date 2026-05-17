@@ -10,7 +10,7 @@
         .wood-bg {
             background-color: #1a0f09;
             background-image: 
-                /* 1. Deep 3D Planks Seams (Ostre, głębokie szczeliny między deskami) */
+                /* 1. Deep 3D Planks Seams (Sharp, deep grooves between the wooden planks) */
                 linear-gradient(90deg, 
                     rgba(0, 0, 0, 0.95) 0px, 
                     rgba(0, 0, 0, 0.7) 3px, 
@@ -19,7 +19,7 @@
                     rgba(0, 0, 0, 0.5) 137px, 
                     rgba(0, 0, 0, 0.95) 140px
                 ),
-                /* 2. Bevel Highlight (Delikatne rozświetlenie krawędzi deski dające trójwymiarowość) */
+                /* 2. Bevel Highlight (Subtle edge highlights giving the plank a three‑dimensional look) */
                 linear-gradient(90deg, 
                     transparent 0px, 
                     rgba(255, 255, 255, 0.04) 4px, 
@@ -28,21 +28,21 @@
                     rgba(0, 0, 0, 0.4) 138px, 
                     transparent 140px
                 ),
-                /* 3. Rich Dark Wood Tones (Cztery celowo zróżnicowane odcienie głębokiego mahoniu) */
+                /* 3. Rich Dark Wood Tones (Four intentionally varied shades of deep mahogany) */
                 repeating-linear-gradient(90deg, 
                     #2d190e 0px, #2d190e 140px, 
                     #1f1109 140px, #1f1109 280px, 
                     #331d10 280px, #331d10 420px,
                     #25150b 420px, #25150b 560px
                 ),
-                /* 4. Rugged Wood Fiber Grain (Poprzeczne, nieregularne słoje dające żywą strukturę) */
+                /* 4. Rugged Wood Fiber Grain (Cross‑cut, irregular wood grains creating a lively texture) */
                 repeating-linear-gradient(0deg, 
                     rgba(0, 0, 0, 0.12) 0px, rgba(0, 0, 0, 0.12) 2px, 
                     transparent 2px, transparent 6px, 
                     rgba(255, 255, 255, 0.01) 6px, rgba(255, 255, 255, 0.01) 8px, 
                     transparent 8px, transparent 12px
                 ),
-                /* 5. Natural Wood Discoloration (Duże, surowe plamy imitujące naturalne przebarwienia drewna) */
+                /* 5. Natural Wood Discoloration (Large, raw patches imitating natural wood discoloration) */
                 linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, transparent 60%, rgba(0, 0, 0, 0.5) 100%),
                 /* 6. Heavy Vignette (Mocny cień na rogach ekranu skupiający światło na centrum) */
                 radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.7) 90%);
@@ -57,8 +57,8 @@
         
         <div class="bg-amber-400 border-8 border-red-600 rounded-3xl p-6 shadow-2xl flex flex-col justify-between items-center text-center transform -rotate-1 hover:rotate-0 transition duration-300">
             <div>
-                <h2 class="text-red-600 font-black text-2xl md:text-3xl tracking-tighter uppercase font-serif">BETTER VISIT HOUSEPREDICTION WEBSITE!</h2>
-                <p class="text-blue-900 font-bold text-lg mt-1 tracking-wide">Are your property estimates criminal?</p>
+                <h2 class="text-red-600 font-black text-2xl md:text-3xl tracking-tighter uppercase font-serif">BETTER USE HOUSE PREDICTION WEBSITE!</h2>
+                <p class="text-blue-900 font-bold text-lg mt-1 tracking-wide">Do you really trust real estate agents?</p>
             </div>
 
             <div class="my-4 w-full overflow-hidden rounded-2xl border-4 border-blue-900 bg-amber-50 shadow-md p-4 flex flex-col items-center justify-center gap-4">
@@ -73,13 +73,13 @@
                 </svg>
                 
                 <div class="w-full bg-[#CC0000] text-white font-black py-3 px-4 rounded-xl border-2 border-white uppercase tracking-wider shadow-md text-sm md:text-base animate-bounce">
-                    "We Guarantee Justice Price!"
+                    "We Guarantee transparent price!"
                 </div>
             </div>
 
             <div class="border-t-4 border-dashed border-blue-900 pt-4 w-full">
                 <p class="text-sm font-extrabold text-blue-950">DON'T LET THE MARKETS ROB YOU!</p>
-                <p class="text-xs text-blue-900 mt-1">Available 24/7 • 505-503-4455</p>
+                <p class="text-xs text-blue-900 mt-1">Available 24/7 • 505-505-5555</p>
             </div>
         </div>
 
@@ -94,39 +94,39 @@
                 <div id="form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Bedrooms</label>
-                        <input type="number" id="Bedrooms" value="3" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="Bedrooms" placeholder="e.g.: 3" required class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Bathrooms</label>
-                        <input type="number" id="Bathrooms" step="0.5" value="2.5" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="Bathrooms" step="0.5" placeholder="e.g.: 1.0" required class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Living Space (m²)</label>
-                        <input type="number" id="m2_Living" value="185" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="m2_Living" placeholder="e.g.: 100m2" required class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Total Size (m²)</label>
-                        <input type="number" id="m2_Lot" value="465" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="m2_Lot" placeholder="e.g.: 1000m2" required class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Floors</label>
-                        <input type="number" id="Floors" step="0.5" value="1.0" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="Floors" step="0.5" placeholder="e.g.: 2.0" required class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Waterfront (0 or 1)</label>
-                        <input type="number" id="Waterfront" min="0" max="1" value="0" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="Waterfront" min="0" max="1" placeholder="e.g.: 0" required class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">View (0 to 4)</label>
-                        <input type="number" id="view" min="0" max="4" value="0" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="view" min="0" max="4" placeholder="e.g.: 2" required class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Condition (1 to 5)</label>
-                        <input type="number" id="Condition" min="1" max="5" value="3" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="Condition" min="1" max="5" placeholder="e.g.: 3" required class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     <div class="md:col-span-2">
                         <label class="block text-xs font-bold uppercase text-stone-700 mb-1">Basement Size (m²)</label>
-                        <input type="number" id="m2_Basement" value="0" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
+                        <input type="number" id="m2_Basement" placeholder="e.g.: 0 or 100m2" class="w-full p-2.5 bg-white border-2 border-stone-300 rounded-xl focus:border-amber-500 focus:ring-0 font-semibold text-stone-800">
                     </div>
                     
                     <button onclick="predict()" class="md:col-span-2 mt-4 bg-red-600 text-white font-black py-4 rounded-xl hover:bg-red-700 transition duration-300 shadow-xl text-lg uppercase tracking-wider">
